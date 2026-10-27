@@ -182,7 +182,7 @@ function agregarCorredor(){
     if (!sistema.validarEdad(edadCorredor)) errores.push("Para ser asociado se tiene que ser mayor de edad");
 
     // Verifica que no este vencida la ficha
-    if (new Date(fechaFicha) < new Date()) errores.push("Ficha medica vencida");
+    if (new Date(fechaFicha + "T00:00") < new Date()) errores.push("Ficha medica vencida");
 
     // Si hay errores, los muestra al usuario
     if (errores.length > 0) {

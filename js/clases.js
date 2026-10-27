@@ -3,7 +3,7 @@ class Carrera {
     constructor(nombre, departamento, fecha, cupo = 30) {
         this.nombre = nombre;
         this.departamento = departamento;
-        this.fecha = new Date(fecha); // Asegurarse de que la fecha sea un objeto Date
+        this.fecha = new Date(fecha + "T00:00"); // Asegurarse de que la fecha sea un objeto Date (con la hora, se toma en hora local)
         this.cupo = cupo;
     }
 
@@ -31,7 +31,7 @@ class Corredor {
         this.nombre = nombre;
         this.edad = edad;
         this.cedula = cedula;
-        this.fechaFicha = new Date(fechaFicha); // Asegurarse de que la fecha sea un objeto Date
+        this.fechaFicha = new Date(fechaFicha + "T00:00"); // Asegurarse de que la fecha sea un objeto Date (con la hora, se toma en hora local)
         this.tipo = tipo;
     }
 
