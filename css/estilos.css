@@ -175,7 +175,7 @@ nav button.activo:hover {       /* la pestaña activa no cambia */
     background-color: #1D4E89;
 }
 
-input:focus, select:focus, button:focus {      /* el campo donde se está escribiendo (también con el teclado) */
+input:focus-visible, select:focus-visible, button:focus-visible {      /* el campo donde se está escribiendo; en botones y opciones, solo al usar el teclado */
     outline: 0.15rem solid rgba(29, 78, 137, 0.35);
     border-color: #1D4E89;
 }
