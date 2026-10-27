@@ -4,7 +4,9 @@ html {
    /* background-color: rgba(131, 255, 127, 0.212); */
     background-color: #E6F0FA;
     box-sizing: border-box;     /* Cambia el modelo de caja para que padding y border no sumen al ancho total */
-    font-family: 'Mukta', sans-serif;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* fuentes que ya trae cada sistema */
+    line-height: 1.5;
+    color: #1F2933;
 }
 
 *, *:before, *:after {      
@@ -85,6 +87,7 @@ label {
 }
 
 input,button, select {
+    font: inherit;      /* los campos y botones usan la misma letra que la página */
     border: 0.06rem solid #666;
     border-radius: 0.3rem;
     display: block;
@@ -131,19 +134,34 @@ input[type="text"], input[type="number"] {
 
 /* Tipografia */
 
+h1, h2, h3 {
+    line-height: 1.2;
+}
 h1 {
     font-size: 2rem;
+    font-weight: 700;
 }
 h2 {
     font-size: 1.5rem;
+    font-weight: 700;
 }
 h3 {
     font-size: 1.2rem;
+    font-weight: 600;
 }
 
 p, label, table, ul, caption {
     margin-top: 1rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+}
+
+label {
+    font-weight: 600;
+}
+
+caption {
+    font-weight: 600;
+    text-align: left;
 }
 
 table {
