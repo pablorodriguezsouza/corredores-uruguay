@@ -1,8 +1,7 @@
 /*  General */
 
 html {
-   /* background-color: rgba(131, 255, 127, 0.212); */
-    background-color: #E6F0FA;
+    background-color: #F3F6FA;
     box-sizing: border-box;     /* Cambia el modelo de caja para que padding y border no sumen al ancho total */
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* fuentes que ya trae cada sistema */
     line-height: 1.5;
@@ -28,21 +27,33 @@ nav button {
     margin: 0.3rem;
     padding: 0.6rem 1.2rem; /* arriba y abajo 0.62rem, izquierda y derecha 0.94rem */
     font-size: 0.9rem;
-    background-color: #f9f9f9;
-    border: 0.06rem solid #666;
+    background-color: #FFFFFF;
+    color: #12263F;
+    border: 0.06rem solid #C5D0DE;
     border-radius: 0.5rem;
     cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
     font-weight: bold;
 }
 
 .activo {
-    background-color: lightblue;
-    border: 0.18rem solid black;
+    background-color: #1D4E89;
+    color: #FFFFFF;
+    border: 0.06rem solid #1D4E89;
 }
 
 img {
     width: 19.1rem;
     height: 12.8rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(18, 38, 63, 0.15);
+}
+
+h1, h2 {
+    color: #12263F;
+}
+
+h3 {
+    color: #1D4E89;
 }
 
 .bloque {
@@ -67,17 +78,29 @@ img {
     min-height: 18.75rem;
 }
 
-section {
-    background-color: #C9DFF7;
+section.bloque {
+    background-color: transparent;     /* la sección agrupa; las tarjetas son los article */
+    box-shadow: none;
 }
 
 article {
-    background-color: #A7BED3;
+    background-color: #FFFFFF;
+}
+
+article.bloque {        /* tarjetas (las de la tabla y el mapa van sin borde) */
+    border: 0.06rem solid #DCE3EC;
+    box-shadow: 0 0.06rem 0.2rem rgba(18, 38, 63, 0.08);
 }
 
 footer {
     text-align: center;
-    background-color: #F0FAFF;
+    background-color: #FFFFFF;
+    color: #52606D;
+    border-top: 0.06rem solid #DCE3EC;
+}
+
+footer a {
+    color: #1D4E89;
 }
 
 label {
@@ -88,7 +111,9 @@ label {
 
 input,button, select {
     font: inherit;      /* los campos y botones usan la misma letra que la página */
-    border: 0.06rem solid #666;
+    background-color: #FFFFFF;
+    color: #1F2933;
+    border: 0.06rem solid #C5D0DE;
     border-radius: 0.3rem;
     display: block;
     margin: 0.6rem 0rem;
@@ -105,6 +130,13 @@ input[type="radio"] {
 
 input[type="text"], input[type="number"] {
     cursor: text;
+}
+
+input[type="button"] {      /* botones de acción de cada formulario */
+    background-color: #1D4E89;
+    color: #FFFFFF;
+    border: 0.06rem solid #1D4E89;
+    font-weight: 600;
 }
 
 .lMap { 
@@ -176,7 +208,18 @@ table {
 
 .table th, .table td  {
     padding: 0.5rem;
-    border: 0.06rem solid rgb(0, 0, 0);
+    border: 0.06rem solid #C5D0DE;
+}
+
+.table th {
+    background-color: #E8EEF6;
+    color: #12263F;
+}
+
+.table .elite td {      /* fila de corredor de élite */
+    background-color: #FDECEC;
+    color: #8A1C1C;
+    font-weight: 600;
 }
 
 @media (max-width: 768px) {     /* tamaño tablets */
@@ -217,7 +260,7 @@ footer span {
     position: fixed;
     bottom: 1.25rem;
     right: 1.25rem;
-    background-color: rgba(0, 0, 0, 0.747);
+    background-color: #1D4E89;
     color: white;
     border: none;
     padding: 0.62rem 0.94rem;
