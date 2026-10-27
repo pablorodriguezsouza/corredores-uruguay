@@ -160,6 +160,34 @@ input[type="button"] {      /* botones de acción de cada formulario */
     padding: 0.55rem;
 }
 
+/* Estados de los formularios */
+
+input[type="button"]:hover {        /* al pasar el mouse por un botón de acción */
+    background-color: #163D6C;
+}
+
+nav button:hover {
+    background-color: #E8EEF6;
+}
+
+nav button.activo:hover {       /* la pestaña activa no cambia */
+    background-color: #1D4E89;
+}
+
+input:focus, select:focus, button:focus {      /* el campo donde se está escribiendo (también con el teclado) */
+    outline: 0.15rem solid rgba(29, 78, 137, 0.35);
+    border-color: #1D4E89;
+}
+
+input:invalid {     /* número fuera del rango del HTML: edad menor a 18 o cupo fuera de 1 a 1000 */
+    border-color: #B42318;
+    background-color: #FEF3F2;
+}
+
+input[type="radio"] {
+    accent-color: #1D4E89;      /* color del círculo marcado */
+}
+
 .lMap { 
     display: inline;
 }
