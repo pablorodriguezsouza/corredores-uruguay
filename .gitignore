@@ -1,0 +1,8 @@
+# Comprimidos de la entrega
+*.rar
+
+# Caratula de la entrega (tiene fotos de los integrantes)
+documento.pdf
+
+# Configuracion del editor
+.vscode/

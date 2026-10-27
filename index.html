@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Sitio web para la gestión de corredores, carreras y patrocinadores en Uruguay.">
+        <meta name="keywords" content="corredores, carreras, patrocinadores, Uruguay, gestión deportiva">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sitio de Corredores</title>
+        <link href="./css/estilos.css" rel="stylesheet">
+        <script src="./js/clases.js"></script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="./js/function.js"></script>
+        <script src="./js/mapa.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Sitio de Corredores</h1>
+            <img src="./img/CorredoresDeUruguay.jpg" alt="logo de corredores de Uruguay">  
+            <!-- <img src="https://i.imgur.com/6lVriez.jpeg" alt="logo de corredores de Uruguay"> Si se pone asi no se tiene que descargar el jpg -->
+        </header>
+        <nav>
+                <button id="btnDatos" class="activo">Datos</button>
+                <button id="btnEstadisticas">Estadísticas</button> 
+        </nav>
+        <main>      
+            <!-- DATOS -->
+            <section id="datos" class="bloque">
+                <h2>Datos</h2>
+
+                <!-- Carreras -->
+                <article class="bloque">
+                    <h3>Carreras</h3>
+                    <form id="FormCarrera" action="#" method="get">
+                        <label for="NombreCarrera">Nombre:</label>
+                        <input id="NombreCarrera" type="text" placeholder="Introducir nombre de la carrera">
+                        <label for="DptoCarrera">Departamento:</label>
+                        <select id="DptoCarrera">
+                            <option value="" disabled selected>-- Seleccionar --</option>
+                            <option value="1">Montevideo</option>
+                            <option value="2">Canelones</option>
+                            <option value="3">Maldonado</option>
+                            <option value="4">Rocha</option>
+                            <option value="5">Treinta y Tres</option>
+                            <option value="6">Cerro Largo</option>
+                            <option value="7">Rivera</option>
+                            <option value="8">Artigas</option>
+                            <option value="9">Salto</option>
+                            <option value="10">Paysandú</option>
+                            <option value="11">Río Negro</option>
+                            <option value="12">Soriano</option>
+                            <option value="13">Colonia</option>
+                            <option value="14">San José</option>
+                            <option value="15">Flores</option>
+                            <option value="16">Florida</option>
+                            <option value="17">Lavalleja</option>
+                            <option value="18">Durazno</option>
+                            <option value="19">Tacuarembó</option>
+                        </select>
+                        <label for="FechaCarrera">Fecha:</label>
+                        <input id="FechaCarrera" type="date">
+                        <label for="cupo">Cupo:</label>
+                        <input id="cupo" type="number" min="1" max="1000" value="30" title="">
+                        <input id="BotonCarrera" type="button" value="Agregar Carrera">
+                    </form>
+                </article>
+
+                <!-- Patrocinadores -->
+                <article class="bloque">
+                    <h3>Patrocinadores</h3>
+                    <form id="FormPatrocinadores" action="#" method="get">
+                        <label for="NombrePatrocinadores">Nombre:</label>
+                        <input id="NombrePatrocinadores" type="text" placeholder="Introducir nombre del patrocinador">
+                        <label for="rubro">Rubro:</label>
+                        <select id="rubro">
+                            <option value="" disabled selected>-- Seleccionar --</option>
+                            <option value="1">Alimenticio</option>
+                            <option value="2">Banco</option>
+                            <option value="3">Bebidas</option>
+                            <option value="4">Farmacia</option>
+                            <option value="5">Ropa Deportiva</option>
+                            <option value="6">Estatal</option>
+                            <option value="7">General</option>
+                        </select>
+                        <label for="ListaCarreras">Carreras:</label>
+                        <select id="ListaCarreras" multiple>
+                            <!-- Aquí se agregarían las carreras en js -->
+                        </select>
+                        <input id="BotonPatrocinador" type="button" value="Agregar/Actualizar Patrocinador">
+                    </form>
+                </article>  
+
+                <!-- Corredores -->      
+                <article class="bloque">
+                    <h3>Corredores</h3>
+                    <form id="FormCorredores" action="#" method="get">
+                        <label for="NombreCorredor">Nombre:</label>
+                        <input id="NombreCorredor" type="text" placeholder="Introducir nombre del corredor">
+                        <label for="edad">Edad:</label>
+                        <input id="edad" type="number" min="18" placeholder="Introducir edad" title="Para participar de carrera tiene que ser mayor de edad">
+                        <label for="cedula">Cedula:</label>
+                        <input id="cedula" type="text" placeholder="Introducir CI" title="Sin guion y puntos">
+                        <label for="FechaFicha">Fecha de vencimiento de ficha médica:</label>
+                        <input id="FechaFicha" type="date">
+                        <p class="pRadio">Tipo de corredor:</p>
+                            <label for="DepElite"><input id="DepElite" type="radio" name="tipo" value="Élite">Deportista de élite</label>
+                            <label for="DepComun"><input id="DepComun" type="radio" name="tipo" value="Común" checked>Deportista común</label>
+                        <input id="BotonCorredor" type="button" value="Agregar Corredor">
+                    </form>
+                </article>
+
+                <!-- Inscripciones -->  
+                <article class="bloque">
+                    <h3>Inscripciones</h3>
+                    <form id="FormInscripciones" action="#" method="get">
+                        <label for="ComboCorredor">Corredor:</label>
+                        <select id="ComboCorredor">
+                            <option value="" disabled selected>-- Sin Datos --</option>
+                            <!-- Aquí se agregarían los corredores ordenados por nombre -->
+                        </select>
+                        <label  for="ComboCarrera">Carrera:</label>
+                        <select id="ComboCarrera">
+                            <option value="" disabled selected>-- Sin Datos --</option>
+                            <!-- Aquí se agregarían las carreras ordenadas por nombre -->
+                        </select>
+                        <input id="BotonInscripcion" type="button" value="Inscribir">
+                    </form>
+                </article>
+            </section>
+
+
+            <!-- ESTADÍSTICAS -->
+            <section id="estadisticas" class="bloque">
+                <h2>Estadísticas</h2>
+
+                <!-- Datos generales -->  
+                <article class="bloque">
+                    <h3>Datos generales</h3>
+                    <p>Promedio de inscriptos por carrera: <span id="promedio">sin datos</span></p>
+                    <p>Carrera/s con más inscriptos:</p>
+                    <ul id="masInscriptos">
+                        <li id="liMasInscriptos">Sin datos</li>
+                        <!-- Aquí se agregarían las carreras  -->
+                    </ul>
+                    <p>Carrera/s sin inscriptos:</p>
+                    <ul id="sinInscriptos">
+                        <li id="liSinInscriptos">Sin datos</li>
+                        <!-- Aquí se agregarían las carreras ordenadas por fecha creciente -->
+                    </ul>
+                    <p>Porcentaje de corredores de élite: <span id="porcentajeElite">sin datos</span></p>
+                </article>
+
+                <!-- Consulta inscriptos -->          
+                <article class="bloque">
+                    <h3>Consulta inscriptos</h3>
+                    <label for="ListaCarrerasIns">Carrera:</label>
+                    <select id="ListaCarrerasIns">
+                        <option value="" disabled selected>-- Sin Datos --</option>
+                        <!-- Aquí se agregarían las carreras -->
+                    </select>
+                    <p class="pRadio">Ordenar por:</p>
+                    <label for="OrdenName"><input id="OrdenName" type="radio" name="orden" value="nombre" checked>Nombre</label>
+                    <label for="OrdenNum"><input id="OrdenNum" type="radio" name="orden" value="numero">Número</label>
+                    <article class="table">
+                        <table>
+                            <caption>Inscriptos</caption>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Edad</th>
+                                    <th>Cédula</th>
+                                    <th>Ficha Médica</th>
+                                    <th>Número</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyInscriptos">
+                                <!-- Aquí se agregarían los inscriptos -->
+                            </tbody>
+                        </table>
+                    </article>
+                </article>
+
+                <!-- Visualizar Mapa --> 
+                <article class="bloque">
+                    <h3>Visualizar Mapa</h3>
+                        <label class="lMap" for="MapaC"><input id="MapaC" type="radio" name="mapa" value="nombre" checked>Por Carrera</label>
+                        <label class="lMap" for="MapaI"><input id="MapaI" type="radio" name="mapa" value="numero">Por Inscripciones</label>
+                        <article class="bloqueMapa">
+                            <div id="mapa"></div>
+                        </article>
+                </article>
+            </section>
+        </main>
+
+        <!-- Footer --> 
+        <footer class="bloque">
+            <p><span>Programación 1- Obligatorio 1er semestre 2025</span><br>
+                Universidad ORT Uruguay - <a href="https://www.ort.edu.uy/" target="_blank">Link</a>
+            </p>
+        </footer>
+        <button id="subir">↑</button>
+    </body>
+</html>
