@@ -8,8 +8,26 @@ html {
     color: #1F2933;
 }
 
-*, *:before, *:after {      
+*, *:before, *:after {
     box-sizing: inherit;    /* Hace que todos los elementos (y sus pseudoelementos) usen el mismo modelo de caja que el <html> */
+}
+
+body {
+    max-width: 72rem;       /* en pantallas anchas el contenido no se estira de más */
+    margin: 0 auto;         /* y queda centrado */
+    padding: 0 1rem;
+}
+
+.columnas {     /* tarjetas una al lado de la otra; si no entran, bajan a la línea siguiente */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.columnas > article {
+    flex: 1 1 26rem;        /* crece y se achica, con un ancho base de 26rem */
+    margin: 0;
 }
 
 header {
@@ -57,8 +75,8 @@ h3 {
 }
 
 .bloque {
-    padding: 1rem;
-    margin: 1rem 0.1rem;
+    padding: 1.25rem;
+    margin: 1rem 0;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.075);
 }
@@ -67,7 +85,7 @@ h3 {
     display: flex;
     justify-content: center;    /* alinea en eje x */
     align-items: center;    /* alinea en eje y */
-    margin: 2rem auto;
+    margin: 1rem auto;
     height: 31rem;
 }
 
@@ -81,6 +99,7 @@ h3 {
 section.bloque {
     background-color: transparent;     /* la sección agrupa; las tarjetas son los article */
     box-shadow: none;
+    padding: 0.5rem 0;
 }
 
 article {
@@ -116,9 +135,9 @@ input,button, select {
     border: 0.06rem solid #C5D0DE;
     border-radius: 0.3rem;
     display: block;
-    margin: 0.6rem 0rem;
+    margin: 0.35rem 0 0;
     padding: 0.4rem;
-    width: 17rem;
+    width: 100%;        /* ocupa el ancho de la tarjeta */
     cursor: pointer;
 }
 input[type="radio"] {  
@@ -137,6 +156,8 @@ input[type="button"] {      /* botones de acción de cada formulario */
     color: #FFFFFF;
     border: 0.06rem solid #1D4E89;
     font-weight: 600;
+    margin-top: 1.25rem;
+    padding: 0.55rem;
 }
 
 .lMap { 
@@ -180,6 +201,7 @@ h2 {
 h3 {
     font-size: 1.2rem;
     font-weight: 600;
+    margin-top: 0;      /* el título queda pegado al borde de arriba de la tarjeta */
 }
 
 p, label, table, ul, caption {
@@ -203,7 +225,7 @@ table {
 }
 
 .pRadio {
-    margin: 2rem 0rem 0rem; /* arriba 2rem, izquierda y derecha 0rem */
+    margin: 1.25rem 0 0;    /* arriba 1.25rem, izquierda, derecha y abajo 0 */
 }
 
 .table th, .table td  {
