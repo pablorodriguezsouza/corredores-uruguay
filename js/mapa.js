@@ -25,7 +25,8 @@ if(tipoMapa === "MapaC")
   else 
     conteo = sistema.contarInscripcionesPorDepartamento();
 
-const dataArray = [['Departamento', 'Cantidad de carreras']];   // ej {UY-MO, 2}
+const titulo = tipoMapa === "MapaC" ? 'Cantidad de carreras' : 'Cantidad de inscripciones';
+const dataArray = [['Departamento', titulo]];   // ej {UY-MO, 2}
 
 for (let nombreDpto in conteo) {
     dataArray.push([nombreDpto, conteo[nombreDpto]]); // Pusheamos el nombre del dpto, y el conteo de ese dpto
