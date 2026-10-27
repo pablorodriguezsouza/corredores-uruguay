@@ -1,14 +1,34 @@
 /*  General */
 
 html {
-   /* background-color: rgba(131, 255, 127, 0.212); */
-    background-color: #E6F0FA;
+    background-color: #F3F6FA;
     box-sizing: border-box;     /* Cambia el modelo de caja para que padding y border no sumen al ancho total */
-    font-family: 'Mukta', sans-serif;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* fuentes que ya trae cada sistema */
+    line-height: 1.5;
+    color: #1F2933;
 }
 
-*, *:before, *:after {      
+*, *:before, *:after {
     box-sizing: inherit;    /* Hace que todos los elementos (y sus pseudoelementos) usen el mismo modelo de caja que el <html> */
+}
+
+body {
+    max-width: 72rem;       /* en pantallas anchas el contenido no se estira de más */
+    margin: 0 auto;         /* y queda centrado */
+    padding: 0 1rem;
+}
+
+.columnas {     /* tarjetas una al lado de la otra; si no entran, bajan a la línea siguiente */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.columnas > article {
+    flex: 1 1 26rem;        /* crece y se achica, con un ancho base de 26rem */
+    min-width: 0;           /* puede ser más angosta que su contenido (la tabla se desliza adentro) */
+    margin: 0;
 }
 
 header {
@@ -26,26 +46,38 @@ nav button {
     margin: 0.3rem;
     padding: 0.6rem 1.2rem; /* arriba y abajo 0.62rem, izquierda y derecha 0.94rem */
     font-size: 0.9rem;
-    background-color: #f9f9f9;
-    border: 0.06rem solid #666;
+    background-color: #FFFFFF;
+    color: #12263F;
+    border: 0.06rem solid #C5D0DE;
     border-radius: 0.5rem;
     cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
     font-weight: bold;
 }
 
 .activo {
-    background-color: lightblue;
-    border: 0.18rem solid black;
+    background-color: #1D4E89;
+    color: #FFFFFF;
+    border: 0.06rem solid #1D4E89;
 }
 
 img {
     width: 19.1rem;
     height: 12.8rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(18, 38, 63, 0.15);
+}
+
+h1, h2 {
+    color: #12263F;
+}
+
+h3 {
+    color: #1D4E89;
 }
 
 .bloque {
-    padding: 1rem;
-    margin: 1rem 0.1rem;
+    padding: 1.25rem;
+    margin: 1rem 0;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.075);
 }
@@ -54,7 +86,7 @@ img {
     display: flex;
     justify-content: center;    /* alinea en eje x */
     align-items: center;    /* alinea en eje y */
-    margin: 2rem auto;
+    margin: 1rem auto;
     height: 31rem;
 }
 
@@ -65,17 +97,30 @@ img {
     min-height: 18.75rem;
 }
 
-section {
-    background-color: #C9DFF7;
+section.bloque {
+    background-color: transparent;     /* la sección agrupa; las tarjetas son los article */
+    box-shadow: none;
+    padding: 0.5rem 0;
 }
 
 article {
-    background-color: #A7BED3;
+    background-color: #FFFFFF;
+}
+
+article.bloque {        /* tarjetas (las de la tabla y el mapa van sin borde) */
+    border: 0.06rem solid #DCE3EC;
+    box-shadow: 0 0.06rem 0.2rem rgba(18, 38, 63, 0.08);
 }
 
 footer {
     text-align: center;
-    background-color: #F0FAFF;
+    background-color: #FFFFFF;
+    color: #52606D;
+    border-top: 0.06rem solid #DCE3EC;
+}
+
+footer a {
+    color: #1D4E89;
 }
 
 label {
@@ -85,12 +130,15 @@ label {
 }
 
 input,button, select {
-    border: 0.06rem solid #666;
+    font: inherit;      /* los campos y botones usan la misma letra que la página */
+    background-color: #FFFFFF;
+    color: #1F2933;
+    border: 0.06rem solid #C5D0DE;
     border-radius: 0.3rem;
     display: block;
-    margin: 0.6rem 0rem;
+    margin: 0.35rem 0 0;
     padding: 0.4rem;
-    width: 17rem;
+    width: 100%;        /* ocupa el ancho de la tarjeta */
     cursor: pointer;
 }
 input[type="radio"] {  
@@ -104,46 +152,124 @@ input[type="text"], input[type="number"] {
     cursor: text;
 }
 
+input[type="button"] {      /* botones de acción de cada formulario */
+    background-color: #1D4E89;
+    color: #FFFFFF;
+    border: 0.06rem solid #1D4E89;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    padding: 0.55rem;
+}
+
+/* Estados de los formularios */
+
+input[type="button"]:hover {        /* al pasar el mouse por un botón de acción */
+    background-color: #163D6C;
+}
+
+nav button:hover {
+    background-color: #E8EEF6;
+}
+
+nav button.activo:hover {       /* la pestaña activa no cambia */
+    background-color: #1D4E89;
+}
+
+input:focus-visible, select:focus-visible, button:focus-visible {      /* el campo donde se está escribiendo; en botones y opciones, solo al usar el teclado */
+    outline: 0.15rem solid rgba(29, 78, 137, 0.35);
+    border-color: #1D4E89;
+}
+
+input:invalid {     /* número fuera del rango del HTML: edad menor a 18 o cupo fuera de 1 a 1000 */
+    border-color: #B42318;
+    background-color: #FEF3F2;
+}
+
+input[type="radio"] {
+    accent-color: #1D4E89;      /* color del círculo marcado */
+}
+
 .lMap { 
     display: inline;
 }
 
 @media (max-width: 768px) {     /* tamaño tablets */
+    nav {
+        display: flex;      /* las dos pestañas lado a lado, mitad y mitad */
+        gap: 0.5rem;
+    }
     nav button {
-        width: 100%;
-        margin: 0.5rem 0;
+        flex: 1;
+        width: auto;
+        margin: 0;
     }
     img {
         width: 100%;
+        max-width: 24rem;
         height: auto;
     }
     input, select, button {
         width: 100%;
-        padding: 0.4rem;
+        padding: 0.6rem;        /* más fácil de tocar con el dedo */
+        font-size: 1rem;        /* con 16px el celular no hace zoom al escribir */
     }
     input[type="radio"] {
-        transform: scale(2);      /* aumenta el tamaño del radio */
+        transform: scale(1.4);      /* aumenta el tamaño del radio */
     }
     .lMap {
     display: inline-block;
+    }
+    .bloqueMapa {
+        height: 22rem;      /* el mapa es más bajo para no dejar tanto blanco */
+    }
+}
+
+@media (max-width: 480px) {     /* tamaño celulares */
+    body {
+        padding: 0 0.6rem;
+    }
+    .bloque {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+    .bloqueMapa {
+        height: 16rem;
     }
 }
 
 /* Tipografia */
 
+h1, h2, h3 {
+    line-height: 1.2;
+}
 h1 {
     font-size: 2rem;
+    font-weight: 700;
 }
 h2 {
     font-size: 1.5rem;
+    font-weight: 700;
 }
 h3 {
     font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0;      /* el título queda pegado al borde de arriba de la tarjeta */
 }
 
 p, label, table, ul, caption {
     margin-top: 1rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+}
+
+label {
+    font-weight: 600;
+}
+
+caption {
+    font-weight: 600;
+    text-align: left;
 }
 
 table {
@@ -153,38 +279,36 @@ table {
 }
 
 .pRadio {
-    margin: 2rem 0rem 0rem; /* arriba 2rem, izquierda y derecha 0rem */
+    margin: 1.25rem 0 0;    /* arriba 1.25rem, izquierda, derecha y abajo 0 */
 }
 
 .table th, .table td  {
     padding: 0.5rem;
-    border: 0.06rem solid rgb(0, 0, 0);
+    border: 0.06rem solid #C5D0DE;
 }
 
-@media (max-width: 768px) {     /* tamaño tablets */
+.table th {
+    background-color: #E8EEF6;
+    color: #12263F;
+}
+
+.table .elite td {      /* fila de corredor de élite */
+    background-color: #FDECEC;
+    color: #8A1C1C;
+    font-weight: 600;
+}
+
+.table {
+    overflow-x: auto;       /* si la tabla no entra, se desliza de costado dentro de la tarjeta */
+}
+
+@media (max-width: 768px) {     /* tamaño tablets y celulares */
     table {
         width: 100%;
-        font-size: 0.8rem;
+        font-size: 0.85rem;     /* chica pero legible; lo que no entra se desliza */
     }
-}
-
-@media (max-width: 480px) {     /* tamaño celulares */
-    table {
-        width: 100%;
-        font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 320px) {     /* tamaño celulares pequeños */
-    table {
-        width: 100%;
-        font-size: 0.572rem;
-    }
-}
-
-@media (max-width: 300px) {     /* tamaño celulares muy pequeños */
-    .table {
-        overflow-x: auto;
+    .table th, .table td {
+        white-space: nowrap;        /* cada dato en una sola línea */
     }
 }
 
@@ -199,7 +323,7 @@ footer span {
     position: fixed;
     bottom: 1.25rem;
     right: 1.25rem;
-    background-color: rgba(0, 0, 0, 0.747);
+    background-color: #1D4E89;
     color: white;
     border: none;
     padding: 0.62rem 0.94rem;

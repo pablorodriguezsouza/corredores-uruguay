@@ -483,9 +483,9 @@ function tablaInscriptos() {
     for (let corredorInscripto of inscriptosEstaCarrera) {
         let nuevaRow = document.createElement("tr");
 
-        // Si el corredor es Élite, se pinta de rojo la row
+        // Si el corredor es Élite, se resalta la row (el color está en la clase "elite" del CSS)
         if (corredorInscripto.corredor.tipo === "Élite") {
-            nuevaRow.style.backgroundColor = "red";
+            nuevaRow.className = "elite";
         }
 
         // Crear celdas para cada dato del corredor
