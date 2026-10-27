@@ -285,7 +285,7 @@ class Sistema {
         }
         
         if (!this.validarCapacidadCupo(carreraInscripcion)) {
-            return { mensaje: "Error: ya inscripto", error: true };
+            return { mensaje: "Error: la carrera no tiene cupo disponible.", error: true };
         }
         
         let numeroInscripcion = this.contadorInscriptos(carreraInscripcion) + 1;
