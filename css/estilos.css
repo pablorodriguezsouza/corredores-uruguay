@@ -27,6 +27,7 @@ body {
 
 .columnas > article {
     flex: 1 1 26rem;        /* crece y se achica, con un ancho base de 26rem */
+    min-width: 0;           /* puede ser más angosta que su contenido (la tabla se desliza adentro) */
     margin: 0;
 }
 
@@ -193,23 +194,48 @@ input[type="radio"] {
 }
 
 @media (max-width: 768px) {     /* tamaño tablets */
+    nav {
+        display: flex;      /* las dos pestañas lado a lado, mitad y mitad */
+        gap: 0.5rem;
+    }
     nav button {
-        width: 100%;
-        margin: 0.5rem 0;
+        flex: 1;
+        width: auto;
+        margin: 0;
     }
     img {
         width: 100%;
+        max-width: 24rem;
         height: auto;
     }
     input, select, button {
         width: 100%;
-        padding: 0.4rem;
+        padding: 0.6rem;        /* más fácil de tocar con el dedo */
+        font-size: 1rem;        /* con 16px el celular no hace zoom al escribir */
     }
     input[type="radio"] {
-        transform: scale(2);      /* aumenta el tamaño del radio */
+        transform: scale(1.4);      /* aumenta el tamaño del radio */
     }
     .lMap {
     display: inline-block;
+    }
+    .bloqueMapa {
+        height: 22rem;      /* el mapa es más bajo para no dejar tanto blanco */
+    }
+}
+
+@media (max-width: 480px) {     /* tamaño celulares */
+    body {
+        padding: 0 0.6rem;
+    }
+    .bloque {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+    .bloqueMapa {
+        height: 16rem;
     }
 }
 
@@ -272,30 +298,17 @@ table {
     font-weight: 600;
 }
 
-@media (max-width: 768px) {     /* tamaño tablets */
-    table {
-        width: 100%;
-        font-size: 0.8rem;
-    }
+.table {
+    overflow-x: auto;       /* si la tabla no entra, se desliza de costado dentro de la tarjeta */
 }
 
-@media (max-width: 480px) {     /* tamaño celulares */
+@media (max-width: 768px) {     /* tamaño tablets y celulares */
     table {
         width: 100%;
-        font-size: 0.6rem;
+        font-size: 0.85rem;     /* chica pero legible; lo que no entra se desliza */
     }
-}
-
-@media (max-width: 320px) {     /* tamaño celulares pequeños */
-    table {
-        width: 100%;
-        font-size: 0.572rem;
-    }
-}
-
-@media (max-width: 300px) {     /* tamaño celulares muy pequeños */
-    .table {
-        overflow-x: auto;
+    .table th, .table td {
+        white-space: nowrap;        /* cada dato en una sola línea */
     }
 }
 
